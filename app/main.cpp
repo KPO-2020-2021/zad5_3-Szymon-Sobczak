@@ -264,26 +264,27 @@ int main(){
             case 'u': /* Opcja pozwalajaca na usuniecie przeszkody ze sceny */
                while (true){
                   try{
-                        std::cout << "Wybierz element powierzchni do usuniecia: " << std::endl;
+                        std::cout << "Wybierz element powierzchni do usuniecia lub anuluj usuwanie podajac numer spoza listy: " << std::endl;
                         Scenery.list_obstacles();
                         std::cout << "Podaj numer elementu > ";
                         std::cin >> ID_nbr_of_obstacle;
                         
                         if(std::cin.fail())
-                           throw std::invalid_argument(":/ Podano bledna wartosc dlugosci lotu ");
+                           throw std::invalid_argument(":/ Podano bledny format numeru elementu ");
                         else{
                            Scenery.delete_obstacle(ID_nbr_of_obstacle);
+                           Link.Rysuj();
+                           std::cout << "Element zostal usuniety ze sceny" << std::endl;
                            break;
                         }      
                   }
                   catch (std::invalid_argument & f){ /* W wyniku wyrzucenia bledu dot. wprowadzania liczby, program poinformuje o tym i usunie blad ze strumienia */
-                        std::cerr << f.what() << std::endl << ":/ Sprobuj jeszcze raz"  << std::endl;
+                        std::cerr << f.what() << std::endl << ":/ Przerwanie operacji usuwania "  << std::endl;
                         std::cin.clear();
                         std::cin.ignore(10000,'\n');   
+                        break;
                   }
                }
-               Link.Rysuj();
-               std::cout << "Element zostal usuniety ze sceny" << std::endl;
             break;
 
             case 'k': /* Opcja konczaca program */
