@@ -84,7 +84,7 @@ class Drone: public Scene_object{
         double get_angle() const;
         
         /*! \brief Metoda wyznaczajaca, zapisujaca oraz rysujaca sciezke pojedynczego przelotu. */
-        void plan_path(double const & angle, double const & distance, PzG::LaczeDoGNUPlota & Link);
+        void plan_path(double const & angle, double const & distance, Vector3D const & position, PzG::LaczeDoGNUPlota & Link);
 
         /*! \brief Metoda wyznaczajaca, zapisujaca oraz rysujaca sciezke zwiadu. */
         void plan_reacon(PzG::LaczeDoGNUPlota & Link);

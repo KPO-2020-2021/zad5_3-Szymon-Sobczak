@@ -15,9 +15,11 @@ users, this can be left out. */
 int main(){
    char Option; /* Inicjalizacja zmiennych tymczasowych */
    
-   double user_angle=0,distance = 0;
+   double user_angle=0,distance = 0, additionl_distance = 0;
    unsigned int nbr_of_act_drone=1, type_of_obstacle = 0, ID_nbr_of_obstacle=0;
-   Vector3D temp_scale, temp_position; 
+   Vector3D temp_scale, temp_position;
+
+   Vector3D origin_position; 
    
    PzG::LaczeDoGNUPlota Link; /* Zmienna potrzebna do wizualizacji rysunku sceny*/
 
@@ -106,10 +108,12 @@ int main(){
                         std::cin.ignore(10000,'\n');   
                   }
                }
+               
+               origin_position = Scenery.use_active_drone()->get_drone_location();
 
                /* Wyrysowanie sciezki przelotu */
                std::cout << "Rysowanie zaplanowanej sciezki przelotu ... " << std::endl;
-               Scenery.use_active_drone()->plan_path(user_angle,distance, Link);
+               Scenery.use_active_drone()->plan_path(user_angle,distance, origin_position, Link);
                Link.DodajNazwePliku("../datasets/path.dat");
                usleep(100000);
                
@@ -123,8 +127,11 @@ int main(){
                usleep(100000);
                
                while(Scenery.check_if_drone_colide(Scenery.use_active_drone()->get_obj_ID())){
-      
-                  Scenery.use_active_drone()->go_horizontal(Scenery.use_active_drone()->calculate_radius() * 2, user_angle, Link);
+                  additionl_distance+=Scenery.use_active_drone()->calculate_radius() * 2;
+                  Scenery.use_active_drone()->plan_path(0,distance + additionl_distance, origin_position, Link);
+                  usleep(100000);
+                  
+                  Scenery.use_active_drone()->go_horizontal(Scenery.use_active_drone()->calculate_radius() * 2, 0, Link);
                   usleep(100000);
                }
          

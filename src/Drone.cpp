@@ -369,10 +369,10 @@ void Drone::go_horizontal(double const & distance, double const & user_angle, Pz
     \param [in] Link - lacze do Gnuplota.
 */
 
-void Drone::plan_path(double const & angle, double const & distance, PzG::LaczeDoGNUPlota & Link){
+void Drone::plan_path(double const & angle, double const & distance, Vector3D const & position, PzG::LaczeDoGNUPlota & Link){
     std::ofstream  FileStrm;
     std::string name_of_file = "../datasets/path.dat";
-    Vector3D path_point_location = drone_location;
+    Vector3D path_point_location = position;
      
     Orientation_angle += angle;
 
@@ -508,19 +508,20 @@ Vector3D const & Drone::get_position(){
 } 
 
 Vector3D const & Drone::get_size(){
-     return fuselage.get_scale();
+    
+    return fuselage.get_scale();
 }
 
-int Drone::calculate_radius(){
-    return sqrt(fuselage.get_scale()[0] / 2 + fuselage.get_scale()[1] / 2) + rotors[0].get_scale()[0]/(1+sqrt(2))*sqrt((2+sqrt(2))/2);
+int Drone::calculate_radius(){ 
+    return sqrt( pow(fuselage.get_scale()[0] / 2,2) + pow(fuselage.get_scale()[1] / 2,2) ) + rotors[0].get_scale()[0]/sqrt(4+2*sqrt(2))*sqrt((2+sqrt(2))/2) ;
 }
 
 bool Drone::detect_collision(const std::shared_ptr<Scene_object> Obj_ptr){
     int drone_radius = calculate_radius();
 
     if(Obj_ptr->get_type() == "plaskowyz" || Obj_ptr->get_type() == "gora ze szczytem" || Obj_ptr->get_type() == "gora z grania"){
-        if(Obj_ptr->get_position()[0] - Obj_ptr->get_size()[0] / 2 - drone_radius < get_position()[0] && Obj_ptr->get_position()[0] + Obj_ptr->get_size()[0] / 2 + drone_radius > get_position()[0]){
-            if(Obj_ptr->get_position()[1] - Obj_ptr->get_size()[1] / 2 - drone_radius < get_position()[1] && Obj_ptr->get_position()[1] + Obj_ptr->get_size()[1] / 2 + drone_radius > get_position()[1]){
+        if(Obj_ptr->get_position()[0] - Obj_ptr->get_size()[0] / 2 - drone_radius - 1 <= get_position()[0] && Obj_ptr->get_position()[0] + Obj_ptr->get_size()[0] / 2 + drone_radius + 1 >= get_position()[0]){
+            if(Obj_ptr->get_position()[1] - Obj_ptr->get_size()[1] / 2 - drone_radius - 1 <= get_position()[1] && Obj_ptr->get_position()[1] + Obj_ptr->get_size()[1] / 2 + drone_radius + 1 >= get_position()[1]){
                 std::cout << "Ladowisko niedostepne!" << std::endl << "Wykryto element powierzchni typu: " << Obj_ptr->get_type() << std::endl;
                 return 1;
             }
@@ -529,7 +530,12 @@ bool Drone::detect_collision(const std::shared_ptr<Scene_object> Obj_ptr){
         else{
             return 0; 
         }
-    }
+    } 
+  /*  else if(Obj_ptr->get_type() == "dron"){
+        Obj_ptr->
+    } 
+ */
+
     return 0; 
 }
 

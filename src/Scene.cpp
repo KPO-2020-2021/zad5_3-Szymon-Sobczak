@@ -218,7 +218,10 @@ void Scene::add_obstacle_mnt_pointed(Vector3D const & position, Vector3D const &
 
 void Scene::add_new_drone(Vector3D const & position){
     std::shared_ptr<Drone> tmp_ptr = std::make_shared<Drone>(position, Number_of_drones++);
+
+
     std::cout << tmp_ptr->calculate_radius() << std::endl;
+
     Drone_list.push_back(tmp_ptr);
     Objects_list.push_back(tmp_ptr);
 }
@@ -279,9 +282,9 @@ bool Scene::check_if_drone_colide(int drone_ID){
         throw std::invalid_argument(":/ Podano bledny numer drona ");
     }
 
-    for (std::shared_ptr<Scene_object> ObiektPtr : Objects_list) {
-      if((*drone_iterator)->detect_collision(ObiektPtr) == 1)
-          return 1;
+    for (std::shared_ptr<Scene_object> ObiektPtr : Objects_list){
+        if((*drone_iterator)->detect_collision(ObiektPtr) == 1)
+            return 1;
     }
     return 0;
 }
