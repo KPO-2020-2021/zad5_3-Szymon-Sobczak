@@ -22,17 +22,17 @@ Scene::Scene(PzG::LaczeDoGNUPlota * Link){
     Link_to_gnuplot = Link;
     Nbr_of_active_drone = 1;
 
-    double val_ctr1[3]={100,100,3}, val_ctr2[3]={50,50,3};
+    double val_ctr1[3]={150,150,3}, val_ctr2[3]={200,150,3};
     Vector3D center_of_drone1(val_ctr1), center_of_drone2(val_ctr2);
 
     add_new_drone(center_of_drone1);
     add_new_drone(center_of_drone2);
 
-    double  val_ctr_pla0[3]={170,170,5}, val_scale0[3]={30,40,10},
-            val_ctr_pla1[3]={130,30,10}, val_scale1[3]={60,40,20},
-            val_ctr_pointed2[3]={70,160,45}, val_scale2[3]={60,40,90},
-            val_ctr_pointed3[3]={40,100,25}, val_scale3[3]={60,60,50},
-            val_ctr_long4[3]={150,100,15}, val_scale4[3]={60,40,30};
+    double  val_ctr_pla0[3]={210,210,5}, val_scale0[3]={30,40,10},
+            val_ctr_pla1[3]={130,70,10}, val_scale1[3]={60,40,20},
+            val_ctr_pointed2[3]={100,230,45}, val_scale2[3]={60,40,90},
+            val_ctr_pointed3[3]={80,130,25}, val_scale3[3]={60,60,50},
+            val_ctr_long4[3]={230,110,15}, val_scale4[3]={60,40,30};
     
     Vector3D center_of_plateau0(val_ctr_pla0), scale_of_plateau0(val_scale0),
              center_of_plateau1(val_ctr_pla1), scale_of_plateau1(val_scale1),
@@ -47,8 +47,8 @@ Scene::Scene(PzG::LaczeDoGNUPlota * Link){
     add_obstacle_mnt_long(center_of_mnt_lng4, scale_of_mnt_lng4);
 
     (*Link_to_gnuplot).ZmienTrybRys(PzG::TR_3D); /* Ustawienie trybu rysowania w gnuplot na 3D. */
-    (*Link_to_gnuplot).UstawZakresY(0,200);      /* Uwstawienie zakresu osi OX, OY i OZ w Gnuplot */ 
-    (*Link_to_gnuplot).UstawZakresX(0,200);
+    (*Link_to_gnuplot).UstawZakresY(0,300);      /* Uwstawienie zakresu osi OX, OY i OZ w Gnuplot */ 
+    (*Link_to_gnuplot).UstawZakresX(0,300);
     (*Link_to_gnuplot).UstawZakresZ(0,150); 
 
     PzG::InfoPlikuDoRysowania *File_info_bed = & (*Link_to_gnuplot).DodajNazwePliku("../datasets/bed.dat");
