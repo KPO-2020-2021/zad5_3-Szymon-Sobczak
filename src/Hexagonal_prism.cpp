@@ -2,9 +2,9 @@
 
 /*!
     \file Hexagonal_prism.cpp
-        \brief Definicje metod klasy Cuboid
+        \brief Definicje metod klasy Hexagonal_prism
 
-    Zawiera definicje funkcji i metod klasy Cuboid.
+    Zawiera definicje funkcji i metod klasy Hexagonal_prism.
 */
 
 /*!

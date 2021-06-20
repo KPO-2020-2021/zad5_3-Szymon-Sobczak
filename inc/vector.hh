@@ -9,9 +9,9 @@
 
 /*!
     \file vector.hh
-        \brief Prototyp i definicja szablonu klasy Vector<Size>.
+        \brief Prototyp i definicja szablonu klasy Vector.
 
-    Prototypy i definicje metod szablonu klasy Vector<Size>.
+    Prototypy i definicje metod szablonu klasy Vector.
 */
 
 /*!

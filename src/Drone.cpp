@@ -457,7 +457,6 @@ void Drone::plan_reacon(PzG::LaczeDoGNUPlota & Link){
     FileStrm.close();
 } 
 
-
 /*! 
     Zadany dodatkowy kat obrotu drona zostanie zsumowany z aktualnym katem obrotu drona.
 
@@ -503,7 +502,7 @@ Vector3D const & Drone::get_position(){
 
 /*!
     Metoda przeslaniajaca metode wirtualna z klasy Scene_object.
-    Pozwala pobrac weltoor reprezentujacy dane o promieniu drona.
+    Pozwala pobrac wektor reprezentujacy dane o promieniu drona.
     
     \return Vector3D zawierajacy dane o promieniu drona.
 */

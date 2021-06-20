@@ -2,9 +2,9 @@
 
 /*!
     \file Scene.cpp
-        \brief Definicje metod klasy Drone.
+        \brief Definicje metod klasy Scene.
 
-    Zawiera definicje metod klasy Drone.
+    Zawiera definicje metod klasy Scene.
 */
 
 /*!

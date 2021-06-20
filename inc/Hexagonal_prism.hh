@@ -10,7 +10,7 @@
 
 /*!
     \file Hexagonal_prism.hh
-        \brief  Definicja klasy Cuboid.
+        \brief  Definicja klasy Hexagonal_prism.
 
     Prototypy funkcji i metod klasy Hexagonal_prism, dziedziczacej z klasy Geometrical_solid.
 */
