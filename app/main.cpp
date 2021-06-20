@@ -28,7 +28,7 @@ int main(){
    Link.Rysuj();
    try{
       Scenery.choose_drone(1);
-      
+   
       /* Zapis i wyswietlenie stanu poczatkowego dronow */
       Scenery.use_active_drone()->Calculate_and_save_to_file_drone();
       Scenery.choose_drone(2);

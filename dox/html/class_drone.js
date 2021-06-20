@@ -20,6 +20,6 @@ var class_drone =
     [ "drone_radius", "class_drone.html#a7b467bd77888674870bfc3ad3e1e543a", null ],
     [ "front_camera", "class_drone.html#a4f6f10cc281b42384d57a03da63d47b2", null ],
     [ "fuselage", "class_drone.html#a48c573b4a2d091fe3763aeaf6007f2ad", null ],
-    [ "Orientation_angle", "class_drone.html#a8c459561a55873bf0dec1361160f8d9c", null ],
+    [ "orientation_angle", "class_drone.html#a26e007901cff9ced07819cb50cff301d", null ],
     [ "rotors", "class_drone.html#a24b0c383d2368a15bf4e451faa3b1f2f", null ]
 ];

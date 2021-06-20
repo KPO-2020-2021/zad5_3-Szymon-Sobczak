@@ -2,7 +2,7 @@ var class_scene__object =
 [
     [ "Scene_object", "class_scene__object.html#a33323a37328469c4d005165496dd28b3", null ],
     [ "~Scene_object", "class_scene__object.html#a419092cf112e98ca71369e711d4e2161", null ],
-    [ "detect_collision", "class_scene__object.html#a75e9c3dea02f1cd52c1bc7f3f0c67204", null ],
+    [ "detect_collision", "class_scene__object.html#af241dc010286a8d22d2f9e3ddacde91b", null ],
     [ "get_name_of_file", "class_scene__object.html#a04892765ce7276b549b5313d8b57dfed", null ],
     [ "get_obj_ID", "class_scene__object.html#a247d8bce7dc93d1db0929652e5f4afc2", null ],
     [ "get_position", "class_scene__object.html#a41e8e48943868ed7c0e37a1c137253bf", null ],

@@ -133,9 +133,9 @@ Metody publiczne</h2></td></tr>
 <tr class="memitem:abedb69bf21763e232f7ef306924df391"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="vector3_d_8hh.html#a01090a0f6a3d1e7e9606819bd0fafda0">Vector3D</a> const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene__object.html#abedb69bf21763e232f7ef306924df391">get_size</a> ()=0</td></tr>
 <tr class="memdesc:abedb69bf21763e232f7ef306924df391"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda czysto wirtualna, stanowi interfejs pozwalajacy pobierac wymiary drona - promien, przeszkody- skale.  <a href="class_scene__object.html#abedb69bf21763e232f7ef306924df391">Więcej...</a><br /></td></tr>
 <tr class="separator:abedb69bf21763e232f7ef306924df391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75e9c3dea02f1cd52c1bc7f3f0c67204"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene__object.html#a75e9c3dea02f1cd52c1bc7f3f0c67204">detect_collision</a> (const std::shared_ptr&lt; <a class="el" href="class_scene__object.html">Scene_object</a> &gt; Obj_ptr)=0</td></tr>
-<tr class="memdesc:a75e9c3dea02f1cd52c1bc7f3f0c67204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda czysto wirtualna, stanowi interfejs pozwalajacy na sprawdzanie kolizji obiektow z innymi obiektami.  <a href="class_scene__object.html#a75e9c3dea02f1cd52c1bc7f3f0c67204">Więcej...</a><br /></td></tr>
-<tr class="separator:a75e9c3dea02f1cd52c1bc7f3f0c67204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af241dc010286a8d22d2f9e3ddacde91b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene__object.html#af241dc010286a8d22d2f9e3ddacde91b">detect_collision</a> (const std::shared_ptr&lt; <a class="el" href="class_scene__object.html">Scene_object</a> &gt; Obj_ptr)</td></tr>
+<tr class="memdesc:af241dc010286a8d22d2f9e3ddacde91b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metoda czysto wirtualna, stanowi interfejs pozwalajacy na sprawdzanie kolizji obiektow z innymi obiektami.  <a href="class_scene__object.html#af241dc010286a8d22d2f9e3ddacde91b">Więcej...</a><br /></td></tr>
+<tr class="separator:af241dc010286a8d22d2f9e3ddacde91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Atrybuty prywatne</h2></td></tr>
@@ -238,8 +238,8 @@ Atrybuty prywatne</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Dokumentacja funkcji składowych</h2>
-<a id="a75e9c3dea02f1cd52c1bc7f3f0c67204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75e9c3dea02f1cd52c1bc7f3f0c67204">&#9670;&nbsp;</a></span>detect_collision()</h2>
+<a id="af241dc010286a8d22d2f9e3ddacde91b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af241dc010286a8d22d2f9e3ddacde91b">&#9670;&nbsp;</a></span>detect_collision()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,14 +257,16 @@ Atrybuty prywatne</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Metoda czysto wirtualna, stanowi interfejs pozwalajacy na sprawdzanie kolizji obiektow z innymi obiektami. </p>
 
-<p>Implementowany w <a class="el" href="class_plateau.html#a1ba0c3f5083c8289ce565dc4553cbaaf">Plateau</a>, <a class="el" href="class_mnt__pointed.html#a7b3d371b5281d4120055ecd4194f68e2">Mnt_pointed</a>, <a class="el" href="class_mnt__long.html#a5d2cc07666ec2aa0550f1830a20a47e9">Mnt_long</a> i <a class="el" href="class_drone.html#a2519901775de45a4850e6987882bd400">Drone</a>.</p>
+<p>Reimplementowana w <a class="el" href="class_drone.html#a2519901775de45a4850e6987882bd400">Drone</a>.</p>
+
+<p class="definition">Definicja w linii <a class="el" href="_scene__object_8hh_source.html#l00071">71</a> pliku <a class="el" href="_scene__object_8hh_source.html">Scene_object.hh</a>.</p>
 
 </div>
 </div>

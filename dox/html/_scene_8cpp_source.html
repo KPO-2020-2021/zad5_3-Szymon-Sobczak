@@ -93,17 +93,17 @@ $(document).ready(function(){initNavTree('_scene_8cpp_source.html',''); initResi
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_scene.html#a9570d1e351b52a20c8f8018d0f3e3282">Link_to_gnuplot</a> = Link;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_scene.html#a6f64913676678f695c3ff7f7cb84f138">Nbr_of_active_drone</a> = 1;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">double</span> val_ctr1[3]={100,100,3}, val_ctr2[3]={50,50,3};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">double</span> val_ctr1[3]={150,150,3}, val_ctr2[3]={200,150,3};</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_vector.html">Vector3D</a> center_of_drone1(val_ctr1), center_of_drone2(val_ctr2);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_scene.html#ac7892729074b7061aa12ac3254667825">add_new_drone</a>(center_of_drone1);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_scene.html#ac7892729074b7061aa12ac3254667825">add_new_drone</a>(center_of_drone2);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">double</span>  val_ctr_pla0[3]={170,170,5}, val_scale0[3]={30,40,10},</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            val_ctr_pla1[3]={130,30,10}, val_scale1[3]={60,40,20},</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            val_ctr_pointed2[3]={70,160,45}, val_scale2[3]={60,40,90},</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            val_ctr_pointed3[3]={40,100,25}, val_scale3[3]={60,60,50},</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            val_ctr_long4[3]={150,100,15}, val_scale4[3]={60,40,30};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">double</span>  val_ctr_pla0[3]={210,210,5}, val_scale0[3]={30,40,10},</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            val_ctr_pla1[3]={130,70,10}, val_scale1[3]={60,40,20},</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            val_ctr_pointed2[3]={100,230,45}, val_scale2[3]={60,40,90},</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            val_ctr_pointed3[3]={80,130,25}, val_scale3[3]={60,60,50},</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            val_ctr_long4[3]={230,110,15}, val_scale4[3]={60,40,30};</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_vector.html">Vector3D</a> center_of_plateau0(val_ctr_pla0), scale_of_plateau0(val_scale0),</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;             center_of_plateau1(val_ctr_pla1), scale_of_plateau1(val_scale1),</div>
@@ -118,8 +118,8 @@ $(document).ready(function(){initNavTree('_scene_8cpp_source.html',''); initResi
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_scene.html#a3a4e44a5a2a1b66afa28d810ef6180ab">add_obstacle_mnt_long</a>(center_of_mnt_lng4, scale_of_mnt_lng4);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    (*Link_to_gnuplot).ZmienTrybRys(<a class="code" href="namespace_pz_g.html#aef59d70a0ee2eab473790613c3628944a856e6b0fa6b8a9dc184c60cf27dcc5d2">PzG::TR_3D</a>); <span class="comment">/* Ustawienie trybu rysowania w gnuplot na 3D. */</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    (*Link_to_gnuplot).UstawZakresY(0,200);      <span class="comment">/* Uwstawienie zakresu osi OX, OY i OZ w Gnuplot */</span> </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    (*Link_to_gnuplot).UstawZakresX(0,200);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    (*Link_to_gnuplot).UstawZakresY(0,300);      <span class="comment">/* Uwstawienie zakresu osi OX, OY i OZ w Gnuplot */</span> </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    (*Link_to_gnuplot).UstawZakresX(0,300);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    (*Link_to_gnuplot).UstawZakresZ(0,150); </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_pz_g_1_1_info_pliku_do_rysowania.html">PzG::InfoPlikuDoRysowania</a> *File_info_bed = &amp; (*Link_to_gnuplot).DodajNazwePliku(<span class="stringliteral">&quot;../datasets/bed.dat&quot;</span>);</div>

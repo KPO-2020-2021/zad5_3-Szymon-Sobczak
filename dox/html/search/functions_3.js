@@ -1,7 +1,7 @@
 var searchData=
 [
   ['delete_5fobstacle_340',['delete_obstacle',['../class_scene.html#a568b0f9359938f784655a57df4118a5e',1,'Scene']]],
-  ['detect_5fcollision_341',['detect_collision',['../class_drone.html#a2519901775de45a4850e6987882bd400',1,'Drone::detect_collision()'],['../class_mnt__long.html#a5d2cc07666ec2aa0550f1830a20a47e9',1,'Mnt_long::detect_collision()'],['../class_mnt__pointed.html#a7b3d371b5281d4120055ecd4194f68e2',1,'Mnt_pointed::detect_collision()'],['../class_plateau.html#a1ba0c3f5083c8289ce565dc4553cbaaf',1,'Plateau::detect_collision()'],['../class_scene__object.html#a75e9c3dea02f1cd52c1bc7f3f0c67204',1,'Scene_object::detect_collision()']]],
+  ['detect_5fcollision_341',['detect_collision',['../class_drone.html#a2519901775de45a4850e6987882bd400',1,'Drone::detect_collision()'],['../class_scene__object.html#af241dc010286a8d22d2f9e3ddacde91b',1,'Scene_object::detect_collision()']]],
   ['dodajdoetykiety_342',['DodajDoEtykiety',['../class_pz_g_1_1_info_punkty_do_rysowania.html#a94340d4c219b5469f79cd70cb1638aa3',1,'PzG::InfoPunktyDoRysowania']]],
   ['dodajnazwepliku_343',['DodajNazwePliku',['../class_pz_g_1_1_lacze_do_g_n_u_plota.html#aa815ce8ec16e12fc246cf422e562869e',1,'PzG::LaczeDoGNUPlota']]],
   ['dodajnazwepliku_5fjednakowepunkty_344',['DodajNazwePliku_JednakowePunkty',['../class_pz_g_1_1_lacze_do_g_n_u_plota.html#ab3286408bb2ca5c5382e721b40d07f4f',1,'PzG::LaczeDoGNUPlota']]],

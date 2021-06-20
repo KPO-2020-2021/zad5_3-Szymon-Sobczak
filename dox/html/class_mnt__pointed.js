@@ -1,7 +1,6 @@
 var class_mnt__pointed =
 [
     [ "Mnt_pointed", "class_mnt__pointed.html#a760962397628cae67064bd4448cb6fc9", null ],
-    [ "detect_collision", "class_mnt__pointed.html#a7b3d371b5281d4120055ecd4194f68e2", null ],
     [ "get_name_of_file", "class_mnt__pointed.html#ab8c9422a2d95d922a02e4ebcf1a72703", null ],
     [ "get_position", "class_mnt__pointed.html#a163000d39030a8a1ccd3f20e9d9de23a", null ],
     [ "get_size", "class_mnt__pointed.html#a4038890c2d7966e017c44331ccc84fee", null ],
