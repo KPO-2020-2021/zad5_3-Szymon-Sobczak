@@ -49,6 +49,7 @@ int main(){
       std::cout << "Aktualna ilosc obiektow Wektor3D: " << Vector3D::get_counter_actual_vectors() << std::endl; 
         
       while (Option != 'k'){ /* Glowna petla menu, dzialajaca do czasu wybrania opcji zakonczenia- k */
+         std::cout << "Aktualna pozycja drona aktywnego (x,y): " << std::fixed << std::setprecision(2) << Scenery.use_active_drone()->get_position()[0] << " " << Scenery.use_active_drone()->get_position()[1] << std::endl;; 
          std::cout << "Twoj wybor? (m - menu) > ";
          std::cin >> Option;
          switch(Option){  
@@ -137,6 +138,7 @@ int main(){
                   std::cout << "Lot zostal wydluzony ...  " << std::endl; 
                   Scenery.use_active_drone()->go_horizontal(Scenery.use_active_drone()->get_size()[0] * 2, 0, Link);
                   usleep(100000);
+                  std::cout << std::endl;
                }
                /* Gdy dron znajdzie odpowiednie miejsce do ladowania, wyladuje*/
                std::cout << "Ladowisko dostepne ... " << std::endl; 

@@ -5,7 +5,6 @@ TEST_CASE("Test konstruktora klasy z parametrem oraz metod do pozyskiwania warto
     double val[3]={100,100,3};
     Vector3D center(val);
     Drone Example(center,0);
-
     CHECK((Example.get_position()[0] ==100 && Example.get_position()[1] == 100 && Example.get_position()[2] == 3));    
 }
 

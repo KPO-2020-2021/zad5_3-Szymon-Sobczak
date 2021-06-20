@@ -19,7 +19,7 @@
 
 Drone::Drone(Vector3D const & location, unsigned int ID) : Scene_object(ID, "dron"){
     drone_location = location;
-    Orientation_angle = 0;
+    orientation_angle = 0;
 }
 
 /*!
@@ -244,9 +244,7 @@ void Drone::Calculate_and_save_to_file_rotor(unsigned int index, Vector3D const 
 void Drone::Calculate_and_save_to_file_drone(){
     double Tval_rot2[3]={-1,1,1},Tval_rot3[3]={1,-1,1},Tval_rot4[3]={-1,-1,1},Tval_cam[3]={1,0,0}, T_offset[3] = {0,0,0.5};
     
-    /****/
     Vector3D rotor_scale = rotors[0].get_scale(), fuselage_scale = fuselage.get_scale();
-    /****/
 
     Vector3D Tr_rot2(Tval_rot2), Tr_rot3(Tval_rot3), Tr_rot4(Tval_rot4), Tr_cam(Tval_cam), Tr_offset(T_offset);
 
@@ -344,7 +342,7 @@ void Drone::go_horizontal(double const & distance, double const & user_angle, Pz
     
     rotate_drone(user_angle,Link);
     
-    Matrix3x3 Rotation_matrix = Fill_matrix_OZ(Orientation_angle);
+    Matrix3x3 Rotation_matrix = Fill_matrix_OZ(orientation_angle);
     
     unit_vector = Rotation_matrix * unit_vector;
     
@@ -376,7 +374,7 @@ void Drone::plan_path(double const & angle, double const & distance, Vector3D co
     std::string name_of_file = "../datasets/path.dat";
     Vector3D path_point_location = position;
      
-    Orientation_angle += angle;
+    orientation_angle += angle;
 
     FileStrm.open(name_of_file);
     if (!FileStrm.is_open()){
@@ -391,7 +389,7 @@ void Drone::plan_path(double const & angle, double const & distance, Vector3D co
 
     double unit_values[3]={1,0,0};
     Vector3D unit_vector(unit_values);
-    Matrix3x3 Rotation_matrix = Fill_matrix_OZ(Orientation_angle);
+    Matrix3x3 Rotation_matrix = Fill_matrix_OZ(orientation_angle);
     unit_vector = Rotation_matrix * unit_vector;
     path_point_location = path_point_location + (unit_vector*distance);
 
@@ -429,7 +427,7 @@ void Drone::plan_reacon(PzG::LaczeDoGNUPlota & Link){
     double unit_values[3]={1,0,0};
     Vector3D unit_vector(unit_values);
     
-    Matrix3x3 Rotation_matrix = Fill_matrix_OZ(Orientation_angle);
+    Matrix3x3 Rotation_matrix = Fill_matrix_OZ(orientation_angle);
     unit_vector = Rotation_matrix * unit_vector;
     path_point_location = path_point_location + (unit_vector * REACON_RADIUS);
     FileStrm << path_point_location << std::endl;
@@ -467,7 +465,7 @@ void Drone::plan_reacon(PzG::LaczeDoGNUPlota & Link){
 */
 
 void Drone::update_angle(double const & additional_angle){
-     Orientation_angle += additional_angle;
+     orientation_angle += additional_angle;
 }
 
 /*! 
@@ -477,7 +475,7 @@ void Drone::update_angle(double const & additional_angle){
 */
 
 double Drone::get_angle() const{
-    return Orientation_angle;
+    return orientation_angle;
 }
 
 /*! 
@@ -499,7 +497,7 @@ double Drone::get_angle() const{
 */
 
 Vector3D const & Drone::get_position(){
-      return fuselage.get_center();
+      return drone_location;
 } 
 
 

@@ -27,7 +27,7 @@
         - prywatne pole "rotors" bedace tablica czteroelementowa obiektow Hexagonal_prism, reprezentuje ono zbior rotorow drona.
         - prywatne pole "fuselage" bedace typu Cuboid, reprezentuje ono kadlub drona.
         - prywatne pole "front_camera" bedace typu Hexagonal_prism, reprezentuje ono dodatkowa bryle wyrozniajaca front drona.
-        - prywatne pole "Orientation_angle" opisujace obrot drona w osi Z. 
+        - prywatne pole "orientation_angle" opisujace obrot drona w osi Z. 
         - publiczny konstruktor z parametrm, ktory okresla pozycje poczatkowa drona.
     
     Klasa posiada prywatne metody pozwalajace na:
@@ -51,6 +51,7 @@ class Drone: public Scene_object{
         /*! \brief Wektor3D reprezentujacy srodek graniastoslupa prawidlowego szesciokatnego w przestrzeni globalnej. */
         Vector3D drone_location;
 
+        /*! \brief Wektor3D reprezentujacy promien drona- najmiejszego okregu obejmujacego rzut calej jego bryly. */
         Vector3D drone_radius;
         
         /*! \brief Pole typu Cuboid reprezentujace kadlub drona. */
@@ -63,7 +64,7 @@ class Drone: public Scene_object{
         Hexagonal_prism front_camera; 
 
         /*! \brief Wartosc double reprezentujaca kat obrotu drona w osi Z. */
-        double Orientation_angle;
+        double orientation_angle;
         
         /*! \brief Metoda realizujaca obliczanie i zapisywanie danych o wierzcholkach globalnych kadluba do pliku. */
         void Calculate_and_save_to_file_fuselage();
