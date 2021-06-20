@@ -68,5 +68,5 @@ class Scene_object{
         virtual Vector3D const & get_size() = 0;
     
         /*! \brief Metoda czysto wirtualna, stanowi interfejs pozwalajacy na sprawdzanie kolizji obiektow z innymi obiektami. */
-        virtual bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) = 0; 
+        virtual bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) {(void)Obj_ptr; return false;}
 };

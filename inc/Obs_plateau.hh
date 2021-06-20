@@ -45,6 +45,4 @@ class Plateau: public Cuboid, public Scene_object{
 
         /*! \brief Metoda pozwalajca pobrac dane o wymiarach obiektu. */
         Vector3D const & get_size() override final;
-
-        bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) override final {std::cout << Obj_ptr <<std::endl; return 0;}
 };
