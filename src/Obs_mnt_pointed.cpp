@@ -117,6 +117,11 @@ void Mnt_pointed::transform_shape(){
     (*this)(7) = apex;
 }
 
+/*!
+    Metoda przeslaniajaca metode wirtualna z klasy Scene_object.
+    \return Vector3D reprezentujacy skale- wymiary gory ze szczytem.
+*/
+
 Vector3D const & Mnt_pointed::get_size(){
     return get_scale();
 }

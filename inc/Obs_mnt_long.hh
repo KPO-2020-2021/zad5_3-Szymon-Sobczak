@@ -27,6 +27,7 @@
     Utworzona klasa zawiera metody przeslaniajace czysto wirtualne metody z klasy Scene_object pozwalajace na:
         - Pobranie nazwy pliku zawierajacego dane o wierzcholkach gory ze zboczem.
         - Pobranie wektora reprezentujacego srodek skosnej sciany boczej gory ze zboczem.
+        - Pobranie danych o wymiarach gory ze zboczem.
 */
 
 class Mnt_long: public Cuboid, public Scene_object{
@@ -47,7 +48,8 @@ class Mnt_long: public Cuboid, public Scene_object{
         /*! \brief Metoda sluzy do pobrania pozycji srodka gory ze zboczem. */
         Vector3D const & get_position() override final;
 
-        bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) override final {std::cout << Obj_ptr <<std::endl; return 0;}
-
+        /*! \brief Metoda pozwalajca pobrac dane o wymiarach obiektu. */
         Vector3D const & get_size() override final;
+
+        bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) override final {std::cout << Obj_ptr <<std::endl; return 0;}
 };

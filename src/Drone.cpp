@@ -260,6 +260,8 @@ void Drone::Calculate_and_save_to_file_drone(){
     Calculate_and_save_to_file_rotor(1,fuselage_scale / 2 * Tr_rot2 + rotor_offset);
     Calculate_and_save_to_file_rotor(2,fuselage_scale / 2 * Tr_rot3 + rotor_offset);
     Calculate_and_save_to_file_rotor(3,fuselage_scale / 2 * Tr_rot4 + rotor_offset);
+
+    drone_radius[0] = sqrt( pow(fuselage.get_scale()[0] / 2,2) + pow(fuselage.get_scale()[1] / 2,2) ) + rotors[0].get_scale()[0]/sqrt(4+2*sqrt(2))*sqrt((2+sqrt(2))/2);
 }
 
 /*!
@@ -457,13 +459,6 @@ void Drone::plan_reacon(PzG::LaczeDoGNUPlota & Link){
     FileStrm.close();
 } 
 
-/*!
-    \return Vector3D aktualnego polozenia srodka kadluba drona w ukladzie globalnym sceny.
-*/
-
-Vector3D const Drone::get_drone_location() const{
-    return drone_location;
-} 
 
 /*! 
     Zadany dodatkowy kat obrotu drona zostanie zsumowany z aktualnym katem obrotu drona.
@@ -507,35 +502,46 @@ Vector3D const & Drone::get_position(){
       return fuselage.get_center();
 } 
 
-Vector3D const & Drone::get_size(){
+
+/*!
+    Metoda przeslaniajaca metode wirtualna z klasy Scene_object.
+    Pozwala pobrac weltoor reprezentujacy dane o promieniu drona.
     
-    return fuselage.get_scale();
+    \return Vector3D zawierajacy dane o promieniu drona.
+*/
+
+Vector3D const & Drone::get_size(){
+    return drone_radius;
 }
 
-int Drone::calculate_radius(){ 
-    return sqrt( pow(fuselage.get_scale()[0] / 2,2) + pow(fuselage.get_scale()[1] / 2,2) ) + rotors[0].get_scale()[0]/sqrt(4+2*sqrt(2))*sqrt((2+sqrt(2))/2) ;
-}
+/*!
+    Metoda przeslaniajaca metode wirtualna z klasy Scene_object.
+    Pozwala sprawdzić czy podany dron bedzie wchodzil w kolizje z innymi obietkem sceny. 
+    
+    \param[in] Obj_ptr - wskaznik na obiekt sceny.
+
+    \return true - jesli dron koliduje z obiektem sceny.
+    \return false - jesli dron nie koliduje z obiektem sceny.
+*/
 
 bool Drone::detect_collision(const std::shared_ptr<Scene_object> Obj_ptr){
-    int drone_radius = calculate_radius();
 
+    Vector3D temp;
     if(Obj_ptr->get_type() == "plaskowyz" || Obj_ptr->get_type() == "gora ze szczytem" || Obj_ptr->get_type() == "gora z grania"){
-        if(Obj_ptr->get_position()[0] - Obj_ptr->get_size()[0] / 2 - drone_radius - 1 <= get_position()[0] && Obj_ptr->get_position()[0] + Obj_ptr->get_size()[0] / 2 + drone_radius + 1 >= get_position()[0]){
-            if(Obj_ptr->get_position()[1] - Obj_ptr->get_size()[1] / 2 - drone_radius - 1 <= get_position()[1] && Obj_ptr->get_position()[1] + Obj_ptr->get_size()[1] / 2 + drone_radius + 1 >= get_position()[1]){
+        if(Obj_ptr->get_position()[0] - Obj_ptr->get_size()[0] / 2 - drone_radius[0] - 1 <= get_position()[0] && Obj_ptr->get_position()[0] + Obj_ptr->get_size()[0] / 2 + drone_radius[0] + 1 >= get_position()[0]){
+            if(Obj_ptr->get_position()[1] - Obj_ptr->get_size()[1] / 2 - drone_radius[0]  - 1 <= get_position()[1] && Obj_ptr->get_position()[1] + Obj_ptr->get_size()[1] / 2 + drone_radius[0]  + 1 >= get_position()[1]){
                 std::cout << "Ladowisko niedostepne!" << std::endl << "Wykryto element powierzchni typu: " << Obj_ptr->get_type() << std::endl;
-                return 1;
+                return true;
             }
-            else return 0;
-        }
-        else{
-            return 0; 
         }
     } 
-  /*  else if(Obj_ptr->get_type() == "dron"){
-        Obj_ptr->
-    } 
- */
-
-    return 0; 
+   
+    if(Obj_ptr->get_type() == "dron" && Obj_ptr.get() != this){
+        if(sqrt( pow(get_position()[0]-Obj_ptr->get_position()[0],2) + pow(get_position()[1]- Obj_ptr->get_position()[1],2))<= (get_size()[0] + Obj_ptr->get_size()[0])){
+            std::cout << "Ladowisko niedostepne!" << std::endl << "Wykryto element typu: " << Obj_ptr->get_type() << std::endl;
+            return true;
+        } 
+    }
+    return false; 
 }
 

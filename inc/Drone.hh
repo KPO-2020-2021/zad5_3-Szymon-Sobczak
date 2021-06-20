@@ -33,7 +33,7 @@
     Klasa posiada prywatne metody pozwalajace na:
         - Obliczenie i zapisanie danych o wierzcholkach globalnych kadluba do pliku.
         - Obliczenie i zapisanie danych o wierzcholkach globalnych pojedynczego rotora do pliku.
-        - Obliczenie i zapisanie danych o wierzcholkach globalnych dodatkowego obiektu wyroznijacego front drona do pliku.
+        - Obliczenie i zapisanie danych o wierzcholkach globalnych dodatkowego obiektu wyrozniajacego front drona do pliku.
 
     Klasa posiada publiczne metody pozwalajace na:
         - Pobranie informacji o polozeniu srodka drona- wektora3D.
@@ -41,13 +41,17 @@
         - Poruszanie sie dronem w ukladzie globalnym, sceny w gore, dol, boki oraz obrot.
         - Aktualizacje kata obrotu drona w osi Z. 
         - Zapis polaczonej bryly drona do pliku.     
-        - Pobranie nazwy pliku zawierajacego dane o kadlubie.                                                
+        - Pobranie nazwy pliku zawierajacego dane o kadlubie.  
+        - Sprawdzenie czy dany dron koliduje z innym obiektem sceny.
+        - Pobranie wymiarow reprezentujacych drona.                                            
 */
 
 class Drone: public Scene_object{
     private:
         /*! \brief Wektor3D reprezentujacy srodek graniastoslupa prawidlowego szesciokatnego w przestrzeni globalnej. */
         Vector3D drone_location;
+
+        Vector3D drone_radius;
         
         /*! \brief Pole typu Cuboid reprezentujace kadlub drona. */
         Cuboid fuselage;
@@ -74,8 +78,6 @@ class Drone: public Scene_object{
         /*! \brief Konstrukotr klasy z parametrem. */
         Drone(Vector3D const & location, unsigned int ID);
 
-        /*! \brief Metoda pozwlajaca pobrac informacje o polozeniu srodka kadluba drona. */
-        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/Vector3D const get_drone_location() const;        
 
         /*! \brief Metoda pozwalajaca zaktualizowac kat obrotu drona o wybrany kat. */
         void update_angle(double const & additional_angle);
@@ -107,9 +109,9 @@ class Drone: public Scene_object{
         /*! \brief Metoda pozwalajca pobrac pozycje obiektu sceny - drona */
         Vector3D const & get_position() override final;
 
-        int calculate_radius();
-
+        /*! \brief Metoda pozwalajaca na sprawdzenie, czy dany dron koliduje z wybranym obiektem sceny. */
         bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) override final;
 
+        /*! \brief Metoda pozwalajca pobrac dane o wymiarach obiektu. */
         Vector3D const & get_size() override final;
 };  

@@ -33,6 +33,8 @@
     Utworzona klasa zawiera metody czysto wirtualne pozwalajace na:
         - Pobranie nazwy pliku obiektu sceny z klas pochodnych.
         - Pobranie wektora reprezentujacego srodek obiektu sceny z klas pochodnych.
+        - Sprawdzenie kolizji obiektu sceny z innymi obiektami sceny. 
+        - Pobranie wymiarow, ktore reprezentuja obiekty.
 */
 
 class Scene_object{
@@ -62,7 +64,9 @@ class Scene_object{
         /*! \brief Metoda czysto wirtualna, stanowi interfejs pozwalajacy pobierac wektor pozycji srodka bryly. */
         virtual Vector3D const & get_position() = 0;
 
+        /*! \brief Metoda czysto wirtualna, stanowi interfejs pozwalajacy pobierac wymiary drona - promien, przeszkody- skale. */
         virtual Vector3D const & get_size() = 0;
-
+    
+        /*! \brief Metoda czysto wirtualna, stanowi interfejs pozwalajacy na sprawdzanie kolizji obiektow z innymi obiektami. */
         virtual bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) = 0; 
 };

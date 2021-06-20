@@ -6,7 +6,7 @@ TEST_CASE("Test konstruktora klasy z parametrem oraz metod do pozyskiwania warto
     Vector3D center(val);
     Drone Example(center,0);
 
-    CHECK((Example.get_drone_location()[0] ==100 && Example.get_drone_location()[1] == 100 && Example.get_drone_location()[2] == 3));    
+    CHECK((Example.get_position()[0] ==100 && Example.get_position()[1] == 100 && Example.get_position()[2] == 3));    
 }
 
 TEST_CASE("Test metody pozwalajacej na pobranie kata obrotu drona. "){

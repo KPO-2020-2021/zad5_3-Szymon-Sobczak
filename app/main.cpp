@@ -15,7 +15,7 @@ users, this can be left out. */
 int main(){
    char Option; /* Inicjalizacja zmiennych tymczasowych */
    
-   double user_angle=0,distance = 0, additionl_distance = 0;
+   double user_angle=0,distance = 0;
    unsigned int nbr_of_act_drone=1, type_of_obstacle = 0, ID_nbr_of_obstacle=0;
    Vector3D temp_scale, temp_position;
 
@@ -59,14 +59,14 @@ int main(){
                Scenery.choose_drone(1);
 
                std::cout << "Dron 1. Polozenie x: " 
-                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_drone_location()[0] << "\ty: " 
-                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_drone_location()[1] << std::endl;
+                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_position()[0] << "\ty: " 
+                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_position()[1] << std::endl;
                
                Scenery.choose_drone(2);
 
                std::cout << "Dron 2. Polozenie x: "   
-                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_drone_location()[0] << "\ty: " 
-                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_drone_location()[1] << std::endl;
+                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_position()[0] << "\ty: " 
+                         << std::fixed << std::setprecision(5) << Scenery.use_active_drone()->get_position()[1] << std::endl;
                
                while (true){
                   try{
@@ -109,7 +109,7 @@ int main(){
                   }
                }
                
-               origin_position = Scenery.use_active_drone()->get_drone_location();
+               origin_position = Scenery.use_active_drone()->get_position();
 
                /* Wyrysowanie sciezki przelotu */
                std::cout << "Rysowanie zaplanowanej sciezki przelotu ... " << std::endl;
@@ -126,15 +126,20 @@ int main(){
                Scenery.use_active_drone()->go_horizontal(distance,user_angle, Link);
                usleep(100000);
                
-               while(Scenery.check_if_drone_colide(Scenery.use_active_drone()->get_obj_ID())){
-                  additionl_distance+=Scenery.use_active_drone()->calculate_radius() * 2;
-                  Scenery.use_active_drone()->plan_path(0,distance + additionl_distance, origin_position, Link);
+               /* Petla sprawdzajaca czy dochodzi do kolizji aktywnego drona z innymi okiektami sceny */
+               while(Scenery.check_if_drone_collides(Scenery.use_active_drone()->get_obj_ID())){
+                  /* Zaplanowanie i narysowanie nowej sciezki przelotu, gdy zostanie wykryta kolizja */
+                  std::cout << "Rysowanie nowej sciezki przelotu ...  " << std::endl;   
+                  Scenery.use_active_drone()->plan_path(0,distance += Scenery.use_active_drone()->get_size()[0] * 2, origin_position, Link);
                   usleep(100000);
                   
-                  Scenery.use_active_drone()->go_horizontal(Scenery.use_active_drone()->calculate_radius() * 2, 0, Link);
+                  /* Prosta autonomia, dron po wykryciu kolizji sam odlatuje o zadana odleglosc. */
+                  std::cout << "Lot zostal wydluzony ...  " << std::endl; 
+                  Scenery.use_active_drone()->go_horizontal(Scenery.use_active_drone()->get_size()[0] * 2, 0, Link);
                   usleep(100000);
                }
-         
+               /* Gdy dron znajdzie odpowiednie miejsce do ladowania, wyladuje*/
+               std::cout << "Ladowisko dostepne ... " << std::endl; 
                std::cout << "Ladowanie ... " << std::endl;    
                Scenery.use_active_drone()->go_verical(-ALTITUDE, Link);
                usleep(100000);

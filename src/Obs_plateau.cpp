@@ -104,6 +104,12 @@ Vector3D const & Plateau::get_position(){
   return get_center();
 }
 
+
+/*!
+    Metoda przeslaniajaca metode wirtualna z klasy Scene_object.
+    \return Vector3D reprezentujacy skale- wymiary plaskowyzu.
+*/
+
 Vector3D const & Plateau::get_size(){
     return get_scale();
 }

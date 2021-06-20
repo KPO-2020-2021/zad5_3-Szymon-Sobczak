@@ -25,7 +25,7 @@
     Prototypy funkcji i metod klasy Scene.
 */
 
-/*! PRZEROBIC
+/*! 
   \brief Klasa modelujaca w programie pojecie Sceny.   
 
     Klasa posiada:
@@ -46,6 +46,7 @@
         - Dodanie do sceny trzech roznych przeszkod terenowych.
         - Wypisanie danych o wszystkich przeszkodach znajdujacych sie na scenie. 
         - Usuniecie wybranej przeszkody. 
+        - Sprawdzenie czy wybrany dron wchodzi w kolizje z innymi obiektami na scenie.
 */
 
 class Scene{
@@ -90,23 +91,24 @@ class Scene{
         /*! \brief Metoda sluzaca probraniu wskaznika na aktywnego drona */
         std::shared_ptr <Drone> use_active_drone();
 
-        /* Metoda pozwalajaca dodac nowego drona do sceny */
+        /*! \brief Metoda pozwalajaca dodac nowego drona do sceny */
         void add_new_drone(Vector3D const & position);
         
-        /* Metoda pozwalajaca dodac nowa przeszkode - plaskowyz do sceny */
+        /*! \brief Metoda pozwalajaca dodac nowa przeszkode - plaskowyz do sceny */
         void add_obstacle_plateau(Vector3D const & position, Vector3D const & scale);
   
-        /* Metoda pozwalajaca dodac nowa przeszkode - zbocze do sceny */
+        /*! \brief Metoda pozwalajaca dodac nowa przeszkode - zbocze do sceny */
         void add_obstacle_mnt_long(Vector3D const & position, Vector3D const & scale);
 
-        /* Metoda pozwalajaca dodac nowa przeszkode - gore ze szczytem do sceny */
+        /*! \brief Metoda pozwalajaca dodac nowa przeszkode - gore ze szczytem do sceny */
         void add_obstacle_mnt_pointed(Vector3D const & position, Vector3D const & scale);
 
-        /* Metoda pozwalajaca wylistowac wszystkie przeszkody na scenie */
+        /*! \brief Metoda pozwalajaca wylistowac wszystkie przeszkody na scenie */
         void list_obstacles();
         
-        /* Metoda pozwalajaca usunac wybrana przeszkode ze sceny */
+        /*! \brief  Metoda pozwalajaca usunac wybrana przeszkode ze sceny */
         void delete_obstacle(int obstacle_ID); 
 
-        bool check_if_drone_colide(int drone_ID);
+        /*! \brief Metoda pozwalajaca na sprawdzenie czy wybrany dron, wchodzi w kolizje z innymi obiektami sceny */
+        bool check_if_drone_collides(int drone_ID);
 };

@@ -114,6 +114,12 @@ void Mnt_long::transform_shape(){
     (*this)(6) = (*this)(7);
 }
 
+
+/*!
+    Metoda przeslaniajaca metode wirtualna z klasy Scene_object.
+    \return Vector3D reprezentujacy skale- wymiary gory ze zboczem.
+*/
+
 Vector3D const & Mnt_long::get_size(){
     Vector3D tmp = get_scale();
     return get_scale();
