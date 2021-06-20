@@ -4,8 +4,11 @@
 #include <fstream>
 #include <cmath>
 #include <iomanip>
+#include <memory>
+#include <algorithm>
 
 #include "Geometrical_solid.hh"
+
 
 /*!
     \file Scene_object.hh
@@ -58,4 +61,8 @@ class Scene_object{
         
         /*! \brief Metoda czysto wirtualna, stanowi interfejs pozwalajacy pobierac wektor pozycji srodka bryly. */
         virtual Vector3D const & get_position() = 0;
+
+        virtual Vector3D const & get_size() = 0;
+
+        virtual bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) = 0; 
 };

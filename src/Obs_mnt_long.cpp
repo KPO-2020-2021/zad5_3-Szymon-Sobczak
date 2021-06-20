@@ -113,3 +113,8 @@ void Mnt_long::transform_shape(){
     (*this)(4) = (*this)(5);
     (*this)(6) = (*this)(7);
 }
+
+Vector3D const & Mnt_long::get_size(){
+    Vector3D tmp = get_scale();
+    return get_scale();
+}

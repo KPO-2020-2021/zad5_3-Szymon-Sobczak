@@ -49,5 +49,5 @@ class Geometrical_solid{
         void update_scale(Vector3D const & new_scale);
 
         /*! \brief Metoda pozwalajaca na pobranie skali bryly geometrycznej */
-        Vector3D get_scale() const;
+        Vector3D const & get_scale();
 };

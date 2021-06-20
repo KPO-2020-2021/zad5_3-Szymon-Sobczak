@@ -41,4 +41,8 @@ class Plateau: public Cuboid, public Scene_object{
 
         /*! \brief Metoda sluzy do pobrania pozycji srodka plaskowyzu. */
         Vector3D const & get_position() override final;
+
+        bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) override final {std::cout << Obj_ptr <<std::endl; return 0;}
+
+        Vector3D const & get_size() override final;
 };

@@ -103,3 +103,7 @@ std::string const & Plateau::get_name_of_file(){
 Vector3D const & Plateau::get_position(){
   return get_center();
 }
+
+Vector3D const & Plateau::get_size(){
+    return get_scale();
+}

@@ -33,7 +33,7 @@ void Geometrical_solid::update_scale(Vector3D const & new_scale){
     \return Aktualna skale bryly geometrycznej, obiekt typu Vector3D.
 */
 
-Vector3D Geometrical_solid::get_scale() const{
+Vector3D const & Geometrical_solid::get_scale(){
     return Scale;
 }
 

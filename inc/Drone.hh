@@ -75,7 +75,7 @@ class Drone: public Scene_object{
         Drone(Vector3D const & location, unsigned int ID);
 
         /*! \brief Metoda pozwlajaca pobrac informacje o polozeniu srodka kadluba drona. */
-        Vector3D const get_drone_location() const;        
+        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/Vector3D const get_drone_location() const;        
 
         /*! \brief Metoda pozwalajaca zaktualizowac kat obrotu drona o wybrany kat. */
         void update_angle(double const & additional_angle);
@@ -106,4 +106,10 @@ class Drone: public Scene_object{
 
         /*! \brief Metoda pozwalajca pobrac pozycje obiektu sceny - drona */
         Vector3D const & get_position() override final;
+
+        int calculate_radius();
+
+        bool detect_collision(const std::shared_ptr<Scene_object> Obj_ptr) override final;
+
+        Vector3D const & get_size() override final;
 };  

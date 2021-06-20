@@ -244,18 +244,22 @@ void Drone::Calculate_and_save_to_file_rotor(unsigned int index, Vector3D const 
 void Drone::Calculate_and_save_to_file_drone(){
     double Tval_rot2[3]={-1,1,1},Tval_rot3[3]={1,-1,1},Tval_rot4[3]={-1,-1,1},Tval_cam[3]={1,0,0}, T_offset[3] = {0,0,0.5};
     
+    /****/
+    Vector3D rotor_scale = rotors[0].get_scale(), fuselage_scale = fuselage.get_scale();
+    /****/
+
     Vector3D Tr_rot2(Tval_rot2), Tr_rot3(Tval_rot3), Tr_rot4(Tval_rot4), Tr_cam(Tval_cam), Tr_offset(T_offset);
 
-    Vector3D rotor_offset = rotors[0].get_scale() * Tr_offset;
+    Vector3D rotor_offset = rotor_scale * Tr_offset;
 
     Calculate_and_save_to_file_fuselage();
 
-    Calculate_and_save_to_file_front_camera(fuselage.get_scale()/2 * Tr_cam);
+    Calculate_and_save_to_file_front_camera(fuselage_scale / 2 * Tr_cam);
 
-    Calculate_and_save_to_file_rotor(0,fuselage.get_scale() / 2 + rotor_offset);
-    Calculate_and_save_to_file_rotor(1,fuselage.get_scale() / 2 * Tr_rot2 + rotor_offset);
-    Calculate_and_save_to_file_rotor(2,fuselage.get_scale() / 2 * Tr_rot3 + rotor_offset);
-    Calculate_and_save_to_file_rotor(3,fuselage.get_scale() / 2 * Tr_rot4 + rotor_offset);
+    Calculate_and_save_to_file_rotor(0,fuselage_scale / 2 + rotor_offset);
+    Calculate_and_save_to_file_rotor(1,fuselage_scale / 2 * Tr_rot2 + rotor_offset);
+    Calculate_and_save_to_file_rotor(2,fuselage_scale / 2 * Tr_rot3 + rotor_offset);
+    Calculate_and_save_to_file_rotor(3,fuselage_scale / 2 * Tr_rot4 + rotor_offset);
 }
 
 /*!
@@ -499,6 +503,33 @@ double Drone::get_angle() const{
     \return Wektor polozenia srodka kadluba drona.
 */
 
- Vector3D const & Drone::get_position(){
+Vector3D const & Drone::get_position(){
       return fuselage.get_center();
 } 
+
+Vector3D const & Drone::get_size(){
+     return fuselage.get_scale();
+}
+
+int Drone::calculate_radius(){
+    return sqrt(fuselage.get_scale()[0] / 2 + fuselage.get_scale()[1] / 2) + rotors[0].get_scale()[0]/(1+sqrt(2))*sqrt((2+sqrt(2))/2);
+}
+
+bool Drone::detect_collision(const std::shared_ptr<Scene_object> Obj_ptr){
+    int drone_radius = calculate_radius();
+
+    if(Obj_ptr->get_type() == "plaskowyz" || Obj_ptr->get_type() == "gora ze szczytem" || Obj_ptr->get_type() == "gora z grania"){
+        if(Obj_ptr->get_position()[0] - Obj_ptr->get_size()[0] / 2 - drone_radius < get_position()[0] && Obj_ptr->get_position()[0] + Obj_ptr->get_size()[0] / 2 + drone_radius > get_position()[0]){
+            if(Obj_ptr->get_position()[1] - Obj_ptr->get_size()[1] / 2 - drone_radius < get_position()[1] && Obj_ptr->get_position()[1] + Obj_ptr->get_size()[1] / 2 + drone_radius > get_position()[1]){
+                std::cout << "Ladowisko niedostepne!" << std::endl << "Wykryto element powierzchni typu: " << Obj_ptr->get_type() << std::endl;
+                return 1;
+            }
+            else return 0;
+        }
+        else{
+            return 0; 
+        }
+    }
+    return 0; 
+}
+

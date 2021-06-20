@@ -109,21 +109,27 @@ int main(){
 
                /* Wyrysowanie sciezki przelotu */
                std::cout << "Rysowanie zaplanowanej sciezki przelotu ... " << std::endl;
-               Scenery.use_active_drone()->plan_path(user_angle,distance,Link);
+               Scenery.use_active_drone()->plan_path(user_angle,distance, Link);
                Link.DodajNazwePliku("../datasets/path.dat");
                usleep(100000);
                
                /* Wykonanie sekwencji ruchow drona */
                std::cout << "Wznoszenie ... " << std::endl;    
-               Scenery.use_active_drone()->go_verical(ALTITUDE,Link);
+               Scenery.use_active_drone()->go_verical(ALTITUDE, Link);
                usleep(100000);
                   
                std::cout << "Przelot ... " << std::endl;    
-               Scenery.use_active_drone()->go_horizontal(distance,user_angle,Link);
+               Scenery.use_active_drone()->go_horizontal(distance,user_angle, Link);
                usleep(100000);
                
+               while(Scenery.check_if_drone_colide(Scenery.use_active_drone()->get_obj_ID())){
+      
+                  Scenery.use_active_drone()->go_horizontal(Scenery.use_active_drone()->calculate_radius() * 2, user_angle, Link);
+                  usleep(100000);
+               }
+         
                std::cout << "Ladowanie ... " << std::endl;    
-               Scenery.use_active_drone()->go_verical(-ALTITUDE,Link);
+               Scenery.use_active_drone()->go_verical(-ALTITUDE, Link);
                usleep(100000);
 
                std::cout << "Dron wyladowal ... " << std::endl; 

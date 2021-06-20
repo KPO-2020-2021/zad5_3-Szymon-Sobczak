@@ -116,3 +116,7 @@ void Mnt_pointed::transform_shape(){
     (*this)(6) = apex;
     (*this)(7) = apex;
 }
+
+Vector3D const & Mnt_pointed::get_size(){
+    return get_scale();
+}

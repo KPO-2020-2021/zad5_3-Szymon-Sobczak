@@ -107,4 +107,6 @@ class Scene{
         
         /* Metoda pozwalajaca usunac wybrana przeszkode ze sceny */
         void delete_obstacle(int obstacle_ID); 
+
+        bool check_if_drone_colide(int drone_ID);
 };

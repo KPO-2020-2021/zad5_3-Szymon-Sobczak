@@ -218,6 +218,7 @@ void Scene::add_obstacle_mnt_pointed(Vector3D const & position, Vector3D const &
 
 void Scene::add_new_drone(Vector3D const & position){
     std::shared_ptr<Drone> tmp_ptr = std::make_shared<Drone>(position, Number_of_drones++);
+    std::cout << tmp_ptr->calculate_radius() << std::endl;
     Drone_list.push_back(tmp_ptr);
     Objects_list.push_back(tmp_ptr);
 }
@@ -264,4 +265,23 @@ void Scene::delete_obstacle(int obstacle_ID){
     remove ((*obs_iterator)->get_name_of_file().c_str());
     Obstacle_list.erase(obs_iterator);
     Objects_list.erase(obj_iterator);
+}
+
+bool Scene::check_if_drone_colide(int drone_ID){
+    
+    auto check_drone = [drone_ID](std::shared_ptr<Drone> Ptr) -> bool
+			{return (Ptr->get_obj_ID() == drone_ID); };
+    
+    std::list<std::shared_ptr<Drone>>::iterator drone_iterator =
+      std::find_if(Drone_list.begin(),Drone_list.end(), check_drone);
+    
+    if (drone_iterator == Drone_list.end()) {
+        throw std::invalid_argument(":/ Podano bledny numer drona ");
+    }
+
+    for (std::shared_ptr<Scene_object> ObiektPtr : Objects_list) {
+      if((*drone_iterator)->detect_collision(ObiektPtr) == 1)
+          return 1;
+    }
+    return 0;
 }
